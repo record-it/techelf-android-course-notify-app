@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotifyApplication"
         tools:targetApi="31">
+        <service android:name=".DelayedService"
+            android:exported="false"/>
         <activity
             android:name=".ActionActivity"
             android:exported="false">

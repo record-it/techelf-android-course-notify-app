@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button simpleNotificationButton;
     private Button defaultActionNotificationButton;
     private Button customActionNotificationButton;
+    private Button startServiceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         simpleNotificationButton = findViewById(R.id.simple_notify_button);
         customActionNotificationButton = findViewById(R.id.custom_action_button);
         defaultActionNotificationButton = findViewById(R.id.action_notify_button);
+        startServiceButton = findViewById(R.id.start_service_button);
         simpleNotificationButton.setOnClickListener(v -> {
             Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
                     .setContentTitle("Hello")
@@ -77,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     5677,
                     notification
             );
+        });
+        startServiceButton.setOnClickListener(v -> {
+            Intent service = new Intent(this.getBaseContext(), DelayedService.class);
+            service.putExtra("delay", 2);
+            service.putExtra("message", "hello");
+            startService(service);
         });
     }
 
